@@ -1,0 +1,43 @@
+<template>
+        <div class={giveCssDynamically}>
+            <template lwc:if={probussinessData}>
+            <h1 class="h1class">{probussinessData.name}</h1>
+            <p class="pClass">{probussinessData.description}</p>
+                 <span>
+                    <span class="h2class">${probussinessData.price} 
+                        <span style="font-size: 15px;" class="fontNormal">     /mo.</span>
+                    </span>
+                </span>
+
+                <div class="inputClass">
+                    <br>
+                    <template for:each={probussinessFeatures} for:item="feature">
+                        <div key={feature.id}>
+                            <img src={rightLogo} style="width: 15px; height: 15px;">{feature}
+                            <br>
+                        </div>
+                    </template>
+                
+              
+                </div>
+    
+               <template if:true={isProbussinessActive}>
+                 <div class="ongoingClass">Ongoing</div>
+               </template>
+               <template if:false={isProbussinessActive}>
+                <div>
+                    <button class="buttonClass" onclick={handleProbussiness} disabled={isDisabled}>Buy Now
+                       <img src={cartLogo} style="width: 20px; height: 20px;" ></button>
+                   </div>
+               </template>
+                 
+            </template>
+
+            <template lwc:else>
+               <div class="spinnerClass">
+              <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+               </div>
+       </template>
+       
+        </div>
+</template>

@@ -1,0 +1,86 @@
+<template>
+    <div class="cardClass">
+        
+            <div class="hero_content">
+                <lightning-layout horizontal-align="center">
+                    <lightning-layout-item>
+                    <legend class="slds-form-element__legend slds-form-element__label">First Name</legend>
+                </lightning-layout-item>
+                </lightning-layout>            
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item size="10" class="textBold">
+            <lightning-input class="firstNameClass" label="First Name"  variant="label-hidden" value={firstName} name="fisrtName" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item>
+        <legend class="slds-form-element__legend slds-form-element__label">Last Name</legend>
+    </lightning-layout-item>
+    </lightning-layout> 
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item size="10">
+            <lightning-input class="lastNameClass" label="Last Name" variant="label-hidden" value={lastName} name="lastName" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item>
+        <legend class="slds-form-element__legend slds-form-element__label">Email</legend>
+    </lightning-layout-item>
+    </lightning-layout> 
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item size="10">
+            <lightning-input class="emailClass" label="Email" variant="label-hidden" value={email} name="email" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item>
+        <legend class="slds-form-element__legend slds-form-element__label" >Phone</legend>
+    </lightning-layout-item>
+    </lightning-layout> 
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item size="10">
+            <lightning-input class="phoneClass" label="Phone" variant="label-hidden" value={phone} name="phone" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+
+    </lightning-layout>
+    
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item class="slds-p-right_xx-large">
+        <legend class="slds-form-element__legend slds-form-element__label">Country</legend>
+    </lightning-layout-item>
+    <lightning-layout-item class="slds-p-left_xx-large">
+        <legend class="slds-form-element__legend slds-form-element__label">State</legend>
+    </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item class="slds-p-right_xx-small" size="4.5">
+            <lightning-input label="Country" variant="label-hidden" value={country} name="country" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-p-left_xx-small" size="4.5">
+            <lightning-input class="stateClass" label="State" variant="label-hidden" value={state} name="state" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item>
+        <legend class="slds-form-element__legend slds-form-element__label">Company</legend>
+    </lightning-layout-item>
+    </lightning-layout> 
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item size="10">
+            <lightning-input class="companyClass" label="Company" variant="label-hidden" value={company} name="company" onchange={handleInput} required></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <lightning-layout horizontal-align="center">
+        <lightning-layout-item>
+            <button onclick={submitButton} class="submitButtonClass">Submit</button>
+        </lightning-layout-item>
+    </lightning-layout>
+</div>
+</div>
+</template>

@@ -1,0 +1,20 @@
+.backgroundClass{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.buttonClass{
+    
+    height: 50px;
+    width: 200px;
+    background-color:#11AFC2;
+    color: white;
+    font-weight: 500;
+    border: none;
+    margin-bottom: 70%;
+    border-radius: 8px;
+    
+}

@@ -1,0 +1,109 @@
+.divclass{
+    height: 400px;
+    width: 250px;
+    background-color: white;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px black;
+}
+
+.activePackage{
+    height: 400px;
+    width: 250px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #00c853;
+    box-shadow: 0 0 10px #00c853;
+}
+
+.divclass:hover{
+    transition: 1.7s ease-out;
+    margin-top: -4%;
+
+}
+.activePackage:hover{
+    transition: 1.7s ease-out;
+    margin-top: -4%;
+}
+
+.h1class{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: black;
+    color: white;
+    font-style: bold;
+    font-weight: 500;/*100 to 900*/
+    font-size: 20px;
+    text-align: center;
+    font-family:Fantasy;
+}
+
+.pClass{
+    margin-top: 6%;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    padding: 5px 10px;
+}
+.h2class{
+    font-size: 30px;
+    margin-top: 4%;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    
+}
+.inputClass{
+    margin-top: -5%;
+    color:black;
+    text-align: start;
+    margin-left: 5%;
+    font-size: 14px;
+}
+.marginClass{
+    margin-top: 2%;
+}
+.buttonClass{
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    background-color:#11AFC2;/* #119eba;*/
+    color:white;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 15%;
+    border: none; 
+    /* width: 100%; */
+    /* margin: 0 auto; */
+
+}
+
+.buttonClass:hover{
+    transition: -0.5s ease-in;
+    height: 35px;
+    width: 95px;
+    font-weight: 450;
+
+}
+
+.buttonClass:disabled {
+    background-color: #d3d3d3; /* Disabled gray */
+    color: #888888;
+    cursor: not-allowed;
+}
+
+.ongoingClass{
+    font-size: large;
+    margin-top: 15%;
+    text-align: center;
+    color:#00c853;
+    font-weight: 800;
+}
+
+.spinnerClass{
+    position: relative;
+    top: 180px;
+
+}

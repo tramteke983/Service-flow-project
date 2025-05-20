@@ -1,0 +1,38 @@
+<template>
+  <div class="divClass">
+    <h2 class="heading">Subscription Dashboard</h2>
+
+    <!-- Spinner -->
+    <template if:true={isLoading}>
+      <div class="spinnerClass">
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+      </div>
+    </template>
+
+    <!-- Plan info -->
+    <template if:true={isPlanActive}>
+      <div class="moveToCenter">
+        <div class="plan-info">
+          <p><strong>Plan Type:</strong> {subscriptionData.plan_type}</p>
+          <p><strong>Start Date:</strong> {subscriptionData.start_date}</p>
+          <p><strong>End Date:</strong> {subscriptionData.end_date}</p>
+          <p><strong>Status:</strong> <span class={statusClass}> {subscriptionData.status}</span></p>
+          <p><strong>Number Of Agents:</strong> {subscriptionData.num_agent}</p>
+          <p><strong>Number Of Calls:</strong> {subscriptionData.num_call}</p>
+        </div>
+      </div>
+
+      <div class="moveToCenter">
+        <button onclick={handleClick} class="buttonClass">Go to Service Flow AI</button>
+      </div>
+    </template>
+
+    <!-- If no plan -->
+    <template if:false={isPlanActive}>
+      <template if:false={isLoading}>
+        <div class="messageClass">You have to purchase the plan</div>
+      </template>
+    </template>
+    
+  </div>
+</template>

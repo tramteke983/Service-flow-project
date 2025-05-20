@@ -1,0 +1,58 @@
+/* serviceFlowTabs.css */
+.logout-tab {
+    margin-left: auto;
+}
+
+.tabButtonClass{
+    background-color: white;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+}
+
+.tabButtonClass:hover{
+    background-color: #11AFC2;
+    color: white;
+    font-weight: 500;
+}
+/* Tab navigation container */
+.slds-tabs_default__nav {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual tab items */
+.slds-tabs_default__item {
+    margin-right: 15px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent; /* For active tab underline */
+    padding-bottom: 5px;
+}
+
+/* Active tab style */
+.slds-tabs_default__item.active {
+    border-color: #0070d2; /* Blue color for active tab */
+    font-weight: bold;
+    color: #0070d2;
+}
+
+/* Hover style for tabs */
+.slds-tabs_default__item:hover {
+    border-color: #d8dde6;
+}
+
+/* Tab content container */
+.slds-tabs_default__content {
+    padding: 15px;
+    border: 1px solid #d8dde6;
+    margin-top: 10px;
+    background-color: #f3f6f9;
+    display: none; /* Hide content by default */
+}
+
+/* Show the active content tab */
+.slds-tabs_default__content.active {
+    display: block; /* Only show content for active tab */
+}

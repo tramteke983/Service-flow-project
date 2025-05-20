@@ -1,0 +1,46 @@
+<template>
+    <div class="divClass">
+
+        <!-- Spinner -->
+    <template if:true={isLoading}>
+      <div class="spinnerClass">
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+      </div>
+    </template>
+
+    <!--   plan active     -->
+       <template if:true={isPlanActive}>
+              <div class="thanksMessage">
+                          Thank you for your purchase! Your payment has been processed successfully.
+                      </div>
+                <lightning-card label="Billing History" class="cardClass">
+                    <ul class="transaction-grid">
+                        
+                        <template for:each={transactionDetails} for:item="eachTransaction">
+                            <li key={eachTransaction.id} class="transaction-card">
+                                <p><strong>Email:</strong> {eachTransaction.customer_email}</p>
+                                <p><strong>Name:</strong> {eachTransaction.customer_name}</p>
+                                <p><strong>Amount:</strong>{eachTransaction.amount}{eachTransaction.currency}</p>
+                                <p><strong>Status:</strong> {eachTransaction.status}</p>
+                                <p><strong>Created At:</strong> {eachTransaction.created_at}</p>
+                                <p><strong>Updated At:</strong> {eachTransaction.updated_at}</p>
+                                <p><strong>Payment ID:</strong> {eachTransaction.payment_id}</p>
+                                <p><strong>User ID:</strong> {eachTransaction.user_id}</p>
+                                <p><strong>Transaction ID:</strong> {eachTransaction.id}</p>
+                            </li>
+                        </template>
+                    </ul>
+                </lightning-card>
+            
+        </template>
+
+       
+       <!-- If no plan active -->
+    <template if:false={isPlanActive}>
+      <template if:false={isLoading}>
+        <div class="messageClass">You have to purchase the plan</div>
+      </template>
+    </template>
+
+    </div>
+</template>

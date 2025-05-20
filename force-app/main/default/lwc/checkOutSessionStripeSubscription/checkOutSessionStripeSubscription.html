@@ -1,0 +1,24 @@
+<template>
+    <div class="cardClass">
+        <lightning-layout horizontal-align="center">
+            
+                <lightning-layout-item class="slds-p-top_xx-large">
+                    <c-jumpstart-subscription onjumpstartpay={handleJumpstartPay}
+                        is-jumpstart-active={isJumpstartActive} is-disabled={isJumpstartButtonDisabled}></c-jumpstart-subscription>
+                </lightning-layout-item>
+
+                <lightning-layout-item class="slds-p-left_large">
+                    <c-pro-bussiness-subscription onprobussinesspay={handleProbussiness}
+                        is-probussiness-active={isProbussinessActive} is-disabled={isProbussinessButtonDisabled}></c-pro-bussiness-subscription>
+                </lightning-layout-item>
+
+                <lightning-layout-item class="slds-p-left_large slds-p-top_xx-large">
+                    <c-enterprise-subscription 
+                    is-enterprize-active={isEnterpriseActive} is-disabled={isEnterprizeButtonDisabled} onenterprizesubscription={handleEnterprize}></c-enterprise-subscription>
+                </lightning-layout-item>
+
+            
+
+        </lightning-layout>
+    </div>
+</template>

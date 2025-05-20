@@ -1,0 +1,50 @@
+<template>
+    
+        <div class="slds-tabs_default">
+            <!-- Tab Navigation -->
+            <ul class="slds-tabs_default__nav" role="tablist">
+                <li class="slds-tabs_default__item tab"  role="presentation" data-id="user-details">
+                    <button onclick={handleTabClick} class="tabButtonClass">User Details</button>
+                </li>
+                <li class="slds-tabs_default__item tab" role="presentation" data-id="subscription">
+                    <button onclick={handleTabClick}  class="tabButtonClass">Subscription</button>
+                </li>
+                <li class="slds-tabs_default__item tab" onclick={handleTabClick} role="presentation" data-id="billing-history">
+                    <button onclick={handleTabClick} class="tabButtonClass">Billing History</button>
+                </li>
+                <li class="slds-tabs_default__item tab" onclick={handleTabClick} role="presentation" data-id="bussiness-details">
+                    <button onclick={handleTabClick}  class="tabButtonClass">Business Details</button>
+                </li>
+                <li class="slds-tabs_default__item tab" onclick={handleTabClick} role="presentation" data-id="dashboard">
+                    <button onclick={handleTabClick}  class="tabButtonClass">Dashboard</button>
+                </li>
+                <li class="slds-tabs_default__item tab" onclick={handleTabClick} role="presentation" data-id="log-out">
+                    <button onclick={handleTabClick}  class="tabButtonClass">Log out</button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <template if:true={isUserDetailsActive}>
+                <c-user-form></c-user-form>
+            </template>
+
+            <template if:true={isSubscriptionActive}>
+                <c-check-out-session-stripe-subscription></c-check-out-session-stripe-subscription>
+            </template>
+
+            <template if:true={isBillingHistoryActive}>
+                <c-payment-success></c-payment-success>
+            </template>
+
+            <template if:true={isBussinessDetailsActive}>
+                <c-bussiness-details></c-bussiness-details>
+            </template>
+
+            <template if:true={isDashboardActive}>
+                <c-dash-board-page></c-dash-board-page>
+            </template>
+            
+            
+        </div>
+    
+</template>

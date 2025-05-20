@@ -1,0 +1,11 @@
+<template>
+   <template lwc:if={openLogin}>
+      <c-login-component></c-login-component>
+   </template>
+
+   <template lwc:if={openTabs}>
+      <c-service-flow-tabs onlogout={handleLogout}></c-service-flow-tabs>
+   </template>
+
+   
+</template>

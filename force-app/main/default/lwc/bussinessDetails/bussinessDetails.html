@@ -1,0 +1,46 @@
+<template>
+   <div class="cardClass">
+        <h1 class="headingClass">Bussiness onboarding survey</h1>
+        <lightning-layout horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Bussiness Name" onchange={handleName} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Bussiness Type" onchange={handleType} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Website" onchange={handleWebsite} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Business Email Address" class="emailClass" onchange={handleEmailAddress} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Phone Number" class="phoneClass" onchange={handlePhone} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+                <lightning-input label="Social Media Links" onchange={handleLinks} required></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout  horizontal-align="center">
+            <lightning-layout-item size="6">
+               <button class="buttonClass" onclick={handleSubmitButton}>Submit</button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

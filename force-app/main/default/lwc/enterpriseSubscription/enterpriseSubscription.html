@@ -1,0 +1,30 @@
+<template>
+    <div class="divclass">
+        <template lwc:if={eneterpriseData}>
+        <h1 class="h1class">{eneterpriseData.name}</h1>
+        <p class="pClass">{eneterpriseData.description}</p>
+            <h2 class="h2class">{eneterpriseData.price}</h2>
+            <div class="inputClass">
+                <br>
+                <template for:each={enterpriseFeatures} for:item="feature">
+                    <div key={feature.id}>
+                        <img src={rightLogo} style="width: 15px; height: 15px;" >{feature}
+                        <br>
+                    </div>
+                </template>
+            
+            </div>
+
+             <div>
+             <button class="buttonClass custom-disabled-button" onclick={handleEnterPrize} disabled={isDisabled}>Buy Now 
+                <img src={cartLogo} style="width: 20px; height: 20px;" ></button>
+            </div>
+        </template>
+
+        <template lwc:else>
+               <div class="spinnerClass">
+              <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+               </div>
+       </template>
+    </div>
+</template>
