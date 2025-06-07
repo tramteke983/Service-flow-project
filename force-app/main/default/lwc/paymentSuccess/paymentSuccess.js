@@ -97,9 +97,7 @@ export default class PaymentSuccess extends LightningElement {
            console.log('catch block executed of transaction get api:  ',error.message);
           }
     }
-    handleButton(){
-      window.location.href="https://cloudintellect680-dev-ed.develop.lightning.force.com/lightning/n/serv__Dashboard_Page";
-    }
+   
 
      get isPlanActive() {
         return !this.isLoading && (this.isJumpstartActive || this.isProbussinessActive || this.isEnterprizeActive);

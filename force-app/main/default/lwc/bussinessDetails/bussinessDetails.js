@@ -15,7 +15,8 @@ export default class BussinessDetails extends LightningElement {
     "phone": "1234567890",
     "busines_email": "info13@mybusiness.com",
     "social_link": "https://instagram.com/mybusiness" */
-  async handleSubmitButton() {
+ async handleSubmitButton() {
+  try {
     let response = await fetch('https://salesforce.serviceflow.ai/api/business-deatils', {
       method: "POST",
       headers: {
@@ -29,37 +30,50 @@ export default class BussinessDetails extends LightningElement {
         busines_email: this.email,
         social_link: this.link
       })
-    })
+    });
 
     if (!response.ok) {
-      console.log('Response is not ok------->: Error is occured while post');
+      console.error('Error: Response is not OK');
+      const errorToast = new ShowToastEvent({
+        title: 'Submission Failed',
+        variant: 'error',
+        message: 'Failed to submit business details. Please try again later.',
+      });
+      this.dispatchEvent(errorToast);
+      return; // ✅ Prevents further processing
     }
 
     let data = await response.json();
     if (data && !data.error) {
-      console.log("bussiness-detail api hit successfully and got data: ", data);
-      
-       //send toast message
-       const event = new ShowToastEvent({
+      console.log("Business details submitted successfully: ", data);
+
+      const successToast = new ShowToastEvent({
         title: 'Submitted Successfully',
         variant: 'success',
-        message:
-          'Your bussiness details submitted successfully.',
+        message: 'Your business details were submitted successfully.',
       });
-      this.dispatchEvent(event);
-
-    } else if (data && data.error) {
-      console.error('bussiness-detail api hit but returned an error: ', data.error);
+      this.dispatchEvent(successToast);
+    } else {
+      console.error('API returned an error: ', data?.error);
+      const errorToast = new ShowToastEvent({
+        title: 'Submission Error',
+        variant: 'error',
+        message: 'Something went wrong while submitting details.',
+      });
+      this.dispatchEvent(errorToast);
     }
 
-    /* const event = new ShowToastEvent({
-          title: 'Submitted Successfully',
-          variant: 'success',
-          message:
-              'Your bussiness details submitted successfully.',
-      });
-      this.dispatchEvent(event);*/
+  } catch (error) {
+    console.error('Exception occurred while submitting details: ', error);
+    const errorToast = new ShowToastEvent({
+      title: 'Network Error',
+      variant: 'error',
+      message: 'Unable to reach server. Please check your network.',
+    });
+    this.dispatchEvent(errorToast);
   }
+}
+
 
   handleName(event) {
     this.bussinessName = event.target.value;

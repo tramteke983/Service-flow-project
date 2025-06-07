@@ -87,92 +87,78 @@ export default class UserForm extends LightningElement {
 
   
   async submitButton() {
-    console.log('submit button clisked...');
-    
-    
-    if (this.userDetails.data) {
-      //assign getters variables to variable
-      const firstName = this.firstName;
-      console.log('firstName on submit: ', firstName);
-      const lastName = this.lastName;
-      console.log('lastname on submit: ', lastName);
-      const email = this.email;
-      console.log('email on submit: ', email);
-      const phone = this.phone;
-      console.log('phone on submit: ', phone);
-      const company = this.company;
-      console.log('comp on submit: ', company);
-      const country = this.country;
-      console.log('country on submit: ', country);
-      const state = this.state;
-      console.log('state on submit: ', state);
+  console.log('submit button clicked...');
 
-      try {
-        if(this.domainUrl){
-          //https://salesforce.serviceflow.ai
-          //let response = await fetch(`https://serviceflowai.hktechlabs.com/api/update/${this.userId}`, {
+  if (this.userDetails.data) {
+    const firstName = this.firstName;
+    const lastName = this.lastName;
+    const email = this.email;
+    const phone = this.phone;
+    const company = this.company;
+    const country = this.country;
+    const state = this.state;
 
-          let response = await fetch(`https://salesforce.serviceflow.ai/api/update/${this.userId}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${this.apiToken}`
-            },
-            body: JSON.stringify({
-              fname: firstName,
-              lname: lastName,
-              email: email,
-              telephone: phone,
-              company: company,
-              country: country,
-              state: state
-            })
-          });
+    try {
+      if (this.domainUrl) {
+        console.log('User Id :>>>>>>>> ', this.userId);
 
-          if (!response.ok) {
-            console.log('Response is not ok------->: Error is occured while put');
-            
-              /*const successEvent = new ShowToastEvent({
-              title: 'Error Occured',
-              variant: 'error',
-              message:
-                'Something went wrong !',
-              });
-              this.dispatchEvent(successEvent);*/
-          }
-  
-          let data = await response.json();
-          if(data && !data.errors){
-            console.log("Data updated/received successfully : ", data);
-              const successEvent = new ShowToastEvent({
-              title: 'Submitted Successfully',
-              variant: 'success',
-              message:
-                'Your details submitted successfully.',
-              });
-              this.dispatchEvent(successEvent);
+        let response = await fetch(`https://salesforce.serviceflow.ai/api/update/${this.userId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${this.apiToken}`
+          },
+          body: JSON.stringify({
+            fname: firstName,
+            lname: lastName,
+            email: email,
+            telephone: phone,
+            company: company,
+            country: country,
+            state: state
+          })
+        });
 
-            //window.location.href = `${this.domainUrl}/lightning/n/sflowai__Service_Flow_Page?status__c=openSubscription`;
-          }else if (data && data.errors) {
-                    console.error('api hit but returned an error: ', JSON.stringify(data.errors));
-
-                   /* const errorEvent = new ShowToastEvent({
-                    title: 'User data is not submitted !',
-                    variant: 'error',
-                    message:  data.errors.message,
-                    });
-                    this.dispatchEvent(errorEvent);*/
-
-            }
-          
+        if (!response.ok) {
+          console.error('Response is not OK');
+          this.dispatchEvent(new ShowToastEvent({
+            title: 'Submission Failed',
+            message: 'Unable to submit your details. Please try again later.',
+            variant: 'error'
+          }));
+          return; // ✅ Stop execution here
         }
-       
-      } catch (error) {
-        console.error('Catch block-------> : ', error.message);
+
+        let data = await response.json();
+
+        if (data && !data.errors) {
+          console.log("Data updated successfully: ", data);
+          this.dispatchEvent(new ShowToastEvent({
+            title: 'Submitted Successfully',
+            message: 'Your details were submitted successfully.',
+            variant: 'success'
+          }));
+
+        } else if (data && data.errors) {
+          console.error('API returned error: ', data.errors);
+          this.dispatchEvent(new ShowToastEvent({
+            title: 'Submission Error',
+            message: 'Failed to update user data: ' + (data.errors.message || 'Unknown error.'),
+            variant: 'error'
+          }));
+        }
       }
+
+    } catch (error) {
+      console.error('Exception occurred: ', error.message);
+      this.dispatchEvent(new ShowToastEvent({
+        title: 'Network Error',
+        message: 'Something went wrong while submitting. Please check your network or try again later.',
+        variant: 'error'
+      }));
     }
-
-
   }
+}
+
 
 }
